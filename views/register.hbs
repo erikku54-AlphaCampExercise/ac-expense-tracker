@@ -1,0 +1,61 @@
+
+
+<h2 class="mt-4 mb-5 text-center">使用者註冊</h2>
+
+<div class="container">
+
+  <div class="row justify-content-center mt-4 mb-3">
+    <div class="col-7">
+      <form action="/records/new" method="post">
+
+        <div class="row mb-3">
+          <div class="col-3">
+            *必填欄位
+          </div>
+          <div class="col-8 text-center fs-5">
+            請填寫基本資料
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-4">
+          <label for="name" class="col-3 form-label h5 text-end mb-0">稱呼*</label>
+          <div class="col-8">
+            <input type="text" class="form-control" id="name" name="name" placeholder="請填寫您的稱呼...">
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-4">
+          <label for="email" class="col-3 form-label h5 text-end mb-0">Email*</label>
+          <div class="col-8">
+            <input type="email" class="form-control" id="email" name="email" placeholder="請填寫郵件信箱...">
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-4">
+          <label for="password" class="col-3 form-label h5 text-end mb-0">密碼*</label>
+          <div class="col-8">
+            <input type="password" class="form-control" id="password" name="password" placeholder="請填寫密碼...">
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-4">
+          <label for="confirmPassword" class="col-3 form-label h5 text-end mb-0">確認密碼*</label>
+          <div class="col-8">
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="請再確認密碼...">
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  {{!-- 新增按鈕 --}}
+  <div class="row justify-content-center">
+      <button type="button" class="col-2 btn btn-primary me-1">註冊確認</button>
+  </div>
+
+</div>
+
+
+
+
