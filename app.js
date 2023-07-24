@@ -29,6 +29,9 @@ app.use(methodOverride('_method'));
 const routes = require('./routes');
 app.use(routes);
 
+// connect to DB
+require('./config/mongoose');
+
 // start and listen on the Express server
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`);

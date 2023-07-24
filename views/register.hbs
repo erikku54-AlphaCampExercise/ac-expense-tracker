@@ -6,7 +6,7 @@
 
   <div class="row justify-content-center mt-4 mb-3">
     <div class="col-7">
-      <form action="/records/new" method="post">
+      <form action="/users/register" method="post" novalidate>
 
         <div class="row mb-3">
           <div class="col-3">
@@ -17,45 +17,89 @@
           </div>
         </div>
 
+
         <div class="row align-items-center mb-4">
           <label for="name" class="col-3 form-label h5 text-end mb-0">稱呼*</label>
           <div class="col-8">
-            <input type="text" class="form-control" id="name" name="name" placeholder="請填寫您的稱呼...">
+            <input type="text" class="form-control" id="name" name="name" placeholder="請填寫您的稱呼..." required>
+            
+            <!-- 在同一層裡加入.valid-feedback與.invalid-feedback，輸入欄位下方就會出現驗證的提示資訊 -->
+            <div class="valid-feedback">Good</div>
+            <div class="invalid-feedback">欄位未填或格式錯誤</div>          
           </div>
         </div>
+
 
         <div class="row align-items-center mb-4">
           <label for="email" class="col-3 form-label h5 text-end mb-0">Email*</label>
           <div class="col-8">
-            <input type="email" class="form-control" id="email" name="email" placeholder="請填寫郵件信箱...">
+            <input type="email" class="form-control" id="email" name="email" placeholder="請填寫郵件信箱..." required>
+          
+            <!-- 在同一層裡加入.valid-feedback與.invalid-feedback，輸入欄位下方就會出現驗證的提示資訊 -->
+            <div class="valid-feedback">Good</div>
+            <div class="invalid-feedback">欄位未填或格式錯誤</div>          
           </div>
         </div>
+
 
         <div class="row align-items-center mb-4">
           <label for="password" class="col-3 form-label h5 text-end mb-0">密碼*</label>
           <div class="col-8">
-            <input type="password" class="form-control" id="password" name="password" placeholder="請填寫密碼...">
+            <input type="password" class="form-control" id="password" name="password" placeholder="請填寫密碼..." required>
+          
+            <!-- 在同一層裡加入.valid-feedback與.invalid-feedback，輸入欄位下方就會出現驗證的提示資訊 -->
+            <div class="valid-feedback">Good</div>
+            <div class="invalid-feedback">欄位未填或格式錯誤</div>      
           </div>
         </div>
+
 
         <div class="row align-items-center mb-4">
           <label for="confirmPassword" class="col-3 form-label h5 text-end mb-0">確認密碼*</label>
           <div class="col-8">
-            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="請再確認密碼...">
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="請再確認密碼..." required>
+          
+            <!-- 在同一層裡加入.valid-feedback與.invalid-feedback，輸入欄位下方就會出現驗證的提示資訊 -->
+            <div class="valid-feedback">Good</div>
+            <div class="invalid-feedback">欄位未填或格式錯誤</div>          
           </div>
+        </div>
+
+
+        {{!-- 新增按鈕 --}}
+        <div class="row justify-content-center">
+            <button type="submit" class="col-4 btn btn-primary me-1">註冊確認</button>
         </div>
 
       </form>
     </div>
   </div>
-
-  {{!-- 新增按鈕 --}}
-  <div class="row justify-content-center">
-      <button type="button" class="col-2 btn btn-primary me-1">註冊確認</button>
-  </div>
-
 </div>
 
+<script>
+
+  // 表單驗證
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (() => {
+    'use strict'
+
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', event => {
+      
+      // 驗證不合格就阻止發送表單
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      // 元素需驗證時再動態要加上一個類，讓設定的CSS選擇器可以作用
+      form.classList.add('was-validated')
+    }, false);
+
+  })()
+
+</script>
 
 
 
