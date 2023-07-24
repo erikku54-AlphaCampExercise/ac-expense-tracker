@@ -29,13 +29,23 @@ app.use(session({
   saveUninitialized: true
 }))
 
+// setting method-override
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 // setting passport
 const usePassport = require('./config/passport');
 usePassport(app);
 
-// setting method-override
-const methodOverride = require('method-override');
-app.use(methodOverride('_method'));
+app.use((req, res, next) => {
+
+  res.locals.isAuthenticated = req.isAuthenticated();
+  res.locals.user = req.user;
+
+  next();
+})
+
+
 
 // routes setting
 const routes = require('./routes');
