@@ -20,11 +20,11 @@ router.post('/register', (req, res) => {
   const errors = [];
 
   if (!name || !email || !password || !confirmPassword) {
-    console.log('所有欄位皆為必填!');
+
     errors.push({ message: '所有欄位皆為必填!' });
   }
   if (password !== confirmPassword) {
-    console.log('密碼與確認密碼不相符!');
+
     errors.push({ message: '密碼與確認密碼不相符!' });
   }
   if (errors.length) {
@@ -34,7 +34,7 @@ router.post('/register', (req, res) => {
   User.findOne({ email })
     .then(user => {
       if (user) {
-        console.log('此email已經註冊過!');
+
         errors.push({ message: '此email已經註冊過!' });
         return res.render('register', { errors });
       }
@@ -43,7 +43,7 @@ router.post('/register', (req, res) => {
         .then(salt => bcrypt.hash(password, salt))
         .then(hash => User.create({ name, email, password: hash }))
 
-      console.log({ message: '註冊成功! 請重新登入!' })
+      req.flash('success_msg', '註冊成功! 請重新登入!')
       return res.redirect('/users/login');
 
     }).catch(err => console.log(err));
@@ -67,7 +67,8 @@ router.post('/logout', (req, res) => {
   // 新版v0.6的logout()是非同步函數
   req.logout(err => {
     if (err) return console.log(err);
-    console.log({ message: '登出成功! 請重新登入' })
+
+    req.flash('success_msg', '登出成功! 請重新登入')
     res.redirect('/users/login');
   })
 

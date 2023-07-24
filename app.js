@@ -29,6 +29,9 @@ app.use(session({
   saveUninitialized: true
 }))
 
+const flash = require('connect-flash');
+app.use(flash());
+
 // setting method-override
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
@@ -41,11 +44,11 @@ app.use((req, res, next) => {
 
   res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.user = req.user;
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.warning_msg = req.flash('warning_msg');
 
   next();
 })
-
-
 
 // routes setting
 const routes = require('./routes');
