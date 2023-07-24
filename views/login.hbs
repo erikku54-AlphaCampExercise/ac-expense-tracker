@@ -6,7 +6,7 @@
 
   <div class="row justify-content-center mt-4 mb-3">
     <div class="col-7">
-      <form action="/records/new" method="post">
+      <form action="/users/login" method="post">
 
         <div class="row align-items-center mb-4">
           <label for="email" class="col-3 form-label h5 text-end mb-0">Email</label>
@@ -22,14 +22,16 @@
           </div>
         </div>
 
+        {{!-- 登入確認按鈕 --}}
+        <div class="row justify-content-center">
+            <button type="submit" class="col-4 btn btn-primary me-1">登入確認</button>
+        </div>
+
       </form>
     </div>
   </div>
 
-  {{!-- 新增按鈕 --}}
-  <div class="row justify-content-center">
-      <button type="button" class="col-2 btn btn-primary me-1">登入確認</button>
-  </div>
+
 
 </div>
 

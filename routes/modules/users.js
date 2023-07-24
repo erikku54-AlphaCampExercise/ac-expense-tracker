@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
+const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 const User = require('../../models/userModel');
@@ -55,12 +56,20 @@ router.get('/login', (req, res) => {
 })
 
 // (功能)登入
-router.post('/login', (req, res) => {
-
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
 })
+)
 
 // (功能)登出
-router.post('logout', (req, res) => {
+router.get('/logout', (req, res) => {
+  // 新版v0.6的logout()是非同步函數
+  req.logout(err => {
+    if (err) return console.log(err);
+    console.log({ message: '登出成功! 請重新登入' })
+    res.redirect('/users/login');
+  })
 
 })
 

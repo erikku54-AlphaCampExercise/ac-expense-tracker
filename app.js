@@ -29,6 +29,10 @@ app.use(session({
   saveUninitialized: true
 }))
 
+// setting passport
+const usePassport = require('./config/passport');
+usePassport(app);
+
 // setting method-override
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));

@@ -26,7 +26,9 @@
     "express-handlebars": "^7.1.0",
     "express-session": "^1.17.3",
     "method-override": "^3.0.0",
-    "mongoose": "^7.4.0"
+    "mongoose": "^7.4.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "dotenv": "^16.3.1",
