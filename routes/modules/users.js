@@ -28,7 +28,7 @@ router.post('/register', (req, res) => {
     errors.push({ message: '密碼與確認密碼不相符!' });
   }
   if (errors.length) {
-    return res.render('register', { errors });
+    return res.render('register', { errors, ...req.body });
   }
 
   User.findOne({ email })
@@ -36,7 +36,7 @@ router.post('/register', (req, res) => {
       if (user) {
 
         errors.push({ message: '此email已經註冊過!' });
-        return res.render('register', { errors });
+        return res.render('register', { errors, ...req.body });
       }
 
       bcrypt.genSalt(10)
@@ -58,9 +58,20 @@ router.get('/login', (req, res) => {
 // (功能)登入
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
+  failureRedirect: '/users/login',
+  failureFlash: true
 })
 )
+
+// router.post('/login', (req, res, next) => {
+//   passport.authenticate('local', (err, user) => {
+//     if (err) { return next(err) }
+//     if (!user) { return res.render('login', { ...req.body }) }
+//     console.log('TEST');
+//     res.redirect('/');
+//   })(req, res, next);
+// });
+
 
 // (功能)登出
 router.post('/logout', (req, res) => {

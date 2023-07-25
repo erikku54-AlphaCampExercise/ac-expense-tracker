@@ -15,14 +15,13 @@ module.exports = app => {
 
 
   // ----設定認證策略
-  passport.use(new LocalStrategy({ usernameField: 'email' },
-    (email, password, done) => {
+  passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true },
+    (req, email, password, done) => {
 
       User.findOne({ email })
         .then(user => {
           if (!user) {
-            console.log({ message: '該email不存在' });
-            return done(null, false, { message: '該email不存在' });
+            return done(null, false, req.flash('error', '該email不存在'));
           }
 
           // 密碼驗證
@@ -30,8 +29,7 @@ module.exports = app => {
             .then(isMatch => {
 
               if (!isMatch) {
-                console.log({ message: '錯誤的使用者密碼' });
-                return done(null, false, { message: '錯誤的使用者密碼' });
+                return done(null, false, req.flash('error', '錯誤的使用者密碼'));
               }
 
               console.log({ message: '登入成功!' })

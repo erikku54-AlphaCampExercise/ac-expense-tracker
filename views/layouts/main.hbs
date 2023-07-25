@@ -16,20 +16,16 @@
     <div class="container-fluid">
       <a class="navbar-brand ms-4" href="/">
         <i class="fa-solid fa-book"></i>
-        <strong>家庭記帳本</strong>
+        <strong>{{#if isAuthenticated}}{{ user.name }}'s{{/if}}家庭記帳本</strong>
       </a>
 
       {{#if isAuthenticated }}
-
         <form action="/users/logout" method="post">
           <button type="submit" class="btn btn-outline-primary border border-2 border-dark fw-bolder me-4">登出</button>
         </form>
-
       {{else}}
-
         <a class="btn btn-outline-primary border border-2 border-dark fw-bolder ms-auto me-2" href="/users/login">登入</a>
         <a class="btn btn-outline-primary border border-2 border-dark fw-bolder me-4" href="/users/register">註冊</a>
-
       {{/if}}
 
     </div>

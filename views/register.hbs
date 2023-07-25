@@ -24,7 +24,7 @@
         <div class="row align-items-center mb-4">
           <label for="name" class="col-3 form-label h5 text-end mb-0">稱呼*</label>
           <div class="col-8">
-            <input type="text" class="form-control" id="name" name="name" placeholder="請填寫您的稱呼..." required>
+            <input type="text" class="form-control" id="name" name="name" value="{{ name }}" placeholder="請填寫您的稱呼..." required>
             
             <!-- 在同一層裡加入.valid-feedback與.invalid-feedback，輸入欄位下方就會出現驗證的提示資訊 -->
             <div class="valid-feedback">Good</div>
@@ -36,7 +36,7 @@
         <div class="row align-items-center mb-4">
           <label for="email" class="col-3 form-label h5 text-end mb-0">Email*</label>
           <div class="col-8">
-            <input type="email" class="form-control" id="email" name="email" placeholder="請填寫郵件信箱..." required>
+            <input type="email" class="form-control" id="email" name="email" value="{{ email }}" placeholder="請填寫郵件信箱..." required>
           
             <!-- 在同一層裡加入.valid-feedback與.invalid-feedback，輸入欄位下方就會出現驗證的提示資訊 -->
             <div class="valid-feedback">Good</div>
@@ -48,7 +48,7 @@
         <div class="row align-items-center mb-4">
           <label for="password" class="col-3 form-label h5 text-end mb-0">密碼*</label>
           <div class="col-8">
-            <input type="password" class="form-control" id="password" name="password" placeholder="請填寫密碼..." required>
+            <input type="password" class="form-control" id="password" name="password" value="{{ password }}" placeholder="請填寫密碼..." required>
           
             <!-- 在同一層裡加入.valid-feedback與.invalid-feedback，輸入欄位下方就會出現驗證的提示資訊 -->
             <div class="valid-feedback">Good</div>
@@ -60,7 +60,7 @@
         <div class="row align-items-center mb-4">
           <label for="confirmPassword" class="col-3 form-label h5 text-end mb-0">確認密碼*</label>
           <div class="col-8">
-            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="請再確認密碼..." required>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="{{ confirmPassword }}" placeholder="請再確認密碼..." required>
           
             <!-- 在同一層裡加入.valid-feedback與.invalid-feedback，輸入欄位下方就會出現驗證的提示資訊 -->
             <div class="valid-feedback">Good</div>
