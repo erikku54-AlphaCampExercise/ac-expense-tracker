@@ -3,27 +3,27 @@
     {
       "id": 1,
       "name": "家居物業",
-      "icon": "<i class='fa-solid fa-house'></i>"
+      "icon": "<i class='fa-solid fa-house fa-2xl text-info'></i>"
     },
     {
       "id": 2,
       "name": "交通出行",
-      "icon": "<i class='fa-solid fa-van-shuttle'></i>"
+      "icon": "<i class='fa-solid fa-van-shuttle fa-2xl text-info'></i>"
     },
     {
       "id": 3,
       "name": "休閒娛樂",
-      "icon": "<i class='fa-solid fa-face-grin-beam'></i>"
+      "icon": "<i class='fa-solid fa-face-grin-beam fa-2xl text-info'></i>"
     },
     {
       "id": 4,
       "name": "餐飲食品",
-      "icon": "<i class='fa-solid fa-utensils'></i>"
+      "icon": "<i class='fa-solid fa-utensils fa-2xl text-info'></i>"
     },
     {
       "id": 5,
       "name": "其他",
-      "icon": "<i class='fa-solid fa-pen'></i>"
+      "icon": "<i class='fa-solid fa-pen fa-2xl text-info'></i>"
     }
   ],
   "users": [

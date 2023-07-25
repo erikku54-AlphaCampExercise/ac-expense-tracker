@@ -43,7 +43,7 @@ module.exports = app => {
 
   // 設定當策略驗證通過時，要存入session的資料
   passport.serializeUser((user, done) => {
-    return done(null, { _id: user._id, name: user.name, email: user.email });
+    return done(null, { _id: user._id, id: user.id, name: user.name, email: user.email });
   })
 
   // 設定當session驗證通過時，要傳入req.user的資料
