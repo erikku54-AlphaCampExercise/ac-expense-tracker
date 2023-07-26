@@ -52,8 +52,8 @@
       </div>
 
       <div class="col-3 row align-items-center">
-        <button type="button" class="col-3 btn btn-sm btn-info me-1">修改</button>
-        <button type="button" class="col-3 btn btn-sm  btn-secondary me-1">刪除</button>
+        <a type="button" class="col-3 btn btn-sm btn-info me-1" href="/records/edit?Id={{ this._id }}">修改</a>
+        <a type="button" class="col-3 btn btn-sm  btn-secondary me-1" href="/records/delete?Id={{ this._id }}">刪除</a>
       </div>
   </div>
   {{/each}}
@@ -62,7 +62,7 @@
   {{!-- 新增按鈕 --}}
   <div class="row justify-content-center mt-5">
 
-      <button type="button" class="col-2 btn btn-primary me-1">新增一筆支出</button>
+      <a type="button" class="col-2 btn btn-primary me-1" href="/records/new">新增一筆支出</a>
 
   </div>
 

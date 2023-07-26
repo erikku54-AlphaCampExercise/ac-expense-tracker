@@ -4,14 +4,23 @@ const router = express.Router();
 
 
 // load category data
-let categorylist;
+let categoryList;
 require('../../config/category')
-  .then(categories => (categorylist = categories));
+  .then(categories => { categoryList = categories; });
 
 
 // (頁面)新增支出
 router.get('/new', (req, res) => {
-  return res.render('new');
+
+  return res.render('new', { categoryList });
+})
+
+// (功能)新增支出
+router.post('/new', (req, res) => {
+
+
+  return res.render('new', { categoryList });
+
 })
 
 // (頁面)修改支出
