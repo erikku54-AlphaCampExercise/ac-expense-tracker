@@ -12,7 +12,18 @@ require('../../config/category')
 // (頁面)首頁
 router.get('/', (req, res) => {
 
-  Record.find({ userId: req.user.id }).sort({ date: 1 }).lean()
+  const selectedId = req.query.categoryId;
+
+  const options = {};
+  if (selectedId !== undefined) {
+    if (selectedId === '0') {
+      return res.redirect('/'); // 重定向去掉尾端query
+    }
+    // 根據selectedId的值製作不同的搜尋字串
+    options.categoryId = selectedId
+  }
+
+  Record.find({ userId: req.user.id, ...options }).sort({ date: 1 }).lean()
     .then(records => {
 
       // 計算消費總和
@@ -26,7 +37,7 @@ router.get('/', (req, res) => {
         record.icon = categoryList.find(category => category.id === record.id).icon;
       });
 
-      res.render('index', { categoryList, records, sum })
+      res.render('index', { categoryList, selectedId, sum, records })
     });
 })
 
