@@ -32,9 +32,9 @@ router.get('/', (req, res) => {
       // records資料預處理
       records.forEach(record => {
         // 把Date轉為需要的格式
-        record.dateStr = record.date.toLocaleDateString();
+        record.dateStr = record.date.toISOString().split('T')[0].replaceAll('-', '/');
         // 找到每個record對應的icon
-        record.icon = categoryList.find(category => category.id === record.id).icon;
+        record.icon = categoryList.find(category => category.id === record.categoryId).icon;
       });
 
       res.render('index', { categoryList, selectedId, sum, records })
