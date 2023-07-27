@@ -43,7 +43,7 @@ router.post('/register', (req, res) => {
         .then(salt => bcrypt.hash(password, salt))
         .then(hash => User.create({ name, email, password: hash }))
 
-      req.flash('success_msg', '註冊成功! 請重新登入!')
+      req.flash('success_msg', '註冊成功! 請重新登入!');
       return res.redirect('/users/login');
 
     }).catch(err => console.log(err));
