@@ -6,7 +6,7 @@
 
   <div class="row justify-content-center mt-4 mb-3">
     <div class="col-7">
-      <form id="formEdit" action="/records/edit" method="post" novalidate>
+      <form id="formEdit" action="/records/{{ record._id }}/edit" method="post" novalidate>
 
         <div class="row mb-3">
           <div class="col-3">
@@ -60,7 +60,8 @@
 
         {{!-- 新增按鈕 --}}
         <div class="row justify-content-center">
-            <button type="submit" class="col-4 btn btn-primary me-1">修改送出</button>
+            <button type="submit" class="col-2 btn btn-info me-1">修改送出</button>
+            <a class="col-2 btn btn-secondary me-1" href="/">取消修改</a>
         </div>
 
       </form>

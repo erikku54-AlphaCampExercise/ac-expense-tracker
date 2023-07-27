@@ -35,7 +35,7 @@ router.post('/new', (req, res) => {
 })
 
 // (頁面)修改支出
-router.get('/edit/:_id', (req, res) => {
+router.get('/:_id/edit', (req, res) => {
 
   const _id = req.params._id;
 
@@ -52,12 +52,37 @@ router.get('/edit/:_id', (req, res) => {
       const dateStr = record.date.toISOString().split('T')[0];
 
       return res.render('edit', { categoryList, record, dateStr });
-    })
+    }).catch(err => console.log(err));
 
 })
 
 // (功能)修改支出
-router.post('/edit', (req, res) => {
+router.post('/:_id/edit', (req, res) => {
+
+  const _id = req.params._id;
+  const { name, date, categoryId, amount } = req.body;
+
+  if (!name || !date || !categoryId || !amount) {
+    console.log('所有欄位皆為必填！');
+    return res.redirect('/_id/edit');
+  }
+
+  Record.findOne({ _id, userId: req.user.id })
+    .then(record => {
+
+      if (!record) {
+        console.log('所選擇的紀錄不存在！');
+        return res.redirect('/');
+      }
+
+      record.name = name;
+      record.date = date;
+      record.categoryId = categoryId;
+      record.amount = amount;
+
+      return record.save();
+    }).then(() => res.redirect('/'))
+    .catch(err => console.log(err));
 
 })
 
