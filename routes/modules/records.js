@@ -52,6 +52,7 @@ router.get('/:_id/edit', (req, res) => {
       const dateStr = record.date.toISOString().split('T')[0];
 
       return res.render('edit', { categoryList, record, dateStr });
+
     }).catch(err => console.log(err));
 
 })

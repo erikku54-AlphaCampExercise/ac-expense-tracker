@@ -38,7 +38,7 @@
         <div class="row align-items-center mb-4">
           <div class="col-3 h5 text-end mb-0">類別*</div>
           <div class="col-8">
-            <select class="form-select" name="categoryId" value="{{ record.categoryId }}" aria-label="Default select example" required>
+            <select class="form-select" id="categoryId" name="categoryId" value="{{ record.categoryId }}" aria-label="Default select example" required>
               <option style="display:none "></option>
               {{#each categoryList }}
               <option value="{{ this.id }}">{{ this.name }}</option>
@@ -70,6 +70,9 @@
 
 </div>
 
+
+{{!-- 引入sweetaler2 --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
   // 表單驗證
@@ -79,7 +82,20 @@
     const form = document.querySelector('#formEdit');
 
     form.addEventListener('submit', event => {
-      
+
+      // 資料未修改就阻止發送表單，並顯示警告訊息
+      if (!checkEdited()) {
+        event.preventDefault()
+        event.stopPropagation()
+
+        Swal.fire({
+          icon: 'warning',
+          title: '資料未修改',
+          showConfirmButton: true
+        })
+        return;
+      }      
+
       // 驗證不合格就阻止發送表單
       if (!form.checkValidity()) {
         event.preventDefault()
@@ -97,6 +113,21 @@
   const options = [ ...document.querySelectorAll('option')];
   options.find(option => option.value === '{{ record.categoryId }}').selected = true;
 
+
+  // 檢查資料是否修正
+  function checkEdited() {
+
+    const name = document.querySelector('#name').value;
+    const date = document.querySelector('#date').value;
+    const categoryId = document.querySelector('#categoryId').value;
+    const amount = document.querySelector('#amount').value;
+
+    if (name==='{{ record.name }}'||name==='{{ record.date }}'||
+      name==='{{ record.categoryId }}'||name==='{{ record.amount }}') {
+        return false;
+    }
+    return true;
+  }
 
 
 </script>

@@ -63,16 +63,6 @@ router.post('/login', passport.authenticate('local', {
 })
 )
 
-// router.post('/login', (req, res, next) => {
-//   passport.authenticate('local', (err, user) => {
-//     if (err) { return next(err) }
-//     if (!user) { return res.render('login', { ...req.body }) }
-//     console.log('TEST');
-//     res.redirect('/');
-//   })(req, res, next);
-// });
-
-
 // (功能)登出
 router.post('/logout', (req, res) => {
   // 新版v0.6的logout()是非同步函數

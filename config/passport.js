@@ -32,7 +32,6 @@ module.exports = app => {
                 return done(null, false, req.flash('error', '錯誤的使用者密碼'));
               }
 
-              console.log({ message: '登入成功!' })
               return done(null, user);
             })
 
