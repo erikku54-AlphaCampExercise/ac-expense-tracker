@@ -12,15 +12,16 @@ require('../../config/category')
 // (頁面)首頁
 router.get('/', (req, res) => {
 
-  const selectedId = req.query.categoryId;
+  const showMsg = req.query.showMsg; // sweetalert訊息選擇器
+  const sortId = req.query.categoryId; // 分類選擇器
 
+  // 根據分類選擇器(sortId)製作不同的搜尋字串
   const options = {};
-  if (selectedId !== undefined) {
-    if (selectedId === '0') {
+  if (sortId !== undefined) {
+    if (sortId === '0') {
       return res.redirect('/'); // 重定向去掉尾端query
     }
-    // 根據selectedId的值製作不同的搜尋字串
-    options.categoryId = selectedId
+    options.categoryId = sortId;
   }
 
   Record.find({ userId: req.user.id, ...options }).sort({ date: 1 }).lean()
@@ -31,13 +32,12 @@ router.get('/', (req, res) => {
 
       // records資料預處理
       records.forEach(record => {
-        // 把Date轉為需要的格式
-        record.dateStr = record.date.toISOString().split('T')[0].replaceAll('-', '/');
-        // 找到每個record對應的icon
-        record.icon = categoryList.find(category => category.id === record.categoryId).icon;
+
+        record.dateStr = record.date.toISOString().split('T')[0].replaceAll('-', '/'); // 把Date轉為需要的格式
+        record.icon = categoryList.find(category => category.id === record.categoryId).icon; // 找到每個record對應的icon
       });
 
-      res.render('index', { categoryList, selectedId, sum, records })
+      res.render('index', { categoryList, sortId, showMsg, sum, records })
     });
 })
 

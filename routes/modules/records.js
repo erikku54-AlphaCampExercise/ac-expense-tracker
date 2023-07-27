@@ -30,7 +30,7 @@ router.post('/new', (req, res) => {
 
   Record.create({ userId: req.user.id, ...req.body })
     .then(() => {
-      return res.redirect('/');
+      return res.redirect('/?showMsg=2');
     }).catch(err => console.log(err));
 })
 
@@ -44,8 +44,8 @@ router.get('/:_id/edit', (req, res) => {
     .then(record => {
 
       if (!record) {
-        console.log('所選擇的紀錄不存在！')
-        return res.redirect('/');
+        // 紀錄不存在
+        return res.redirect('/?showMsg=11');
       }
 
       // 把時間格式化為日期字串yyyy-MM-dd
@@ -57,7 +57,7 @@ router.get('/:_id/edit', (req, res) => {
 })
 
 // (功能)修改支出
-router.post('/:_id/edit', (req, res) => {
+router.put('/:_id', (req, res) => {
 
   const _id = req.params._id;
   const { name, date, categoryId, amount } = req.body;
@@ -71,8 +71,8 @@ router.post('/:_id/edit', (req, res) => {
     .then(record => {
 
       if (!record) {
-        console.log('所選擇的紀錄不存在！');
-        return res.redirect('/');
+        // 紀錄不存在
+        return res.redirect('/?showMsg=11');
       }
 
       record.name = name;
@@ -81,9 +81,28 @@ router.post('/:_id/edit', (req, res) => {
       record.amount = amount;
 
       return record.save();
-    }).then(() => res.redirect('/'))
+    }).then(() => res.redirect('/?showMsg=3'))
     .catch(err => console.log(err));
 
 })
+
+// (功能)刪除支出
+router.delete('/:_id', (req, res) => {
+
+  const _id = req.params._id;
+  const userId = req.user.id;
+
+  Record.findOne({ _id, userId })
+    .then(record => {
+      if (!record) {
+        // 紀錄不存在
+        return res.redirect('/?showMsg=11');
+      }
+
+      return record.deleteOne()
+    }).then(() => res.redirect('/?showMsg=4'))
+    .catch(err => console.log(err));
+})
+
 
 module.exports = router; // 匯出設定的express路由器

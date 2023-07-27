@@ -6,7 +6,7 @@
 
   <div class="row justify-content-center mt-4 mb-3">
     <div class="col-7">
-      <form id="formEdit" action="/records/{{ record._id }}/edit" method="post" novalidate>
+      <form id="formEdit" action="/records/{{ record._id }}?_method=put" method="post" novalidate>
 
         <div class="row mb-3">
           <div class="col-3">

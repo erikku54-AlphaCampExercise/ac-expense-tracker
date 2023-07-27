@@ -57,7 +57,7 @@ router.get('/login', (req, res) => {
 
 // (功能)登入
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/?showMsg=1',
   failureRedirect: '/users/login',
   failureFlash: true
 })
