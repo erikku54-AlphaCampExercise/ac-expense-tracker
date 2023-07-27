@@ -52,11 +52,11 @@ FACEBOOK_SECRET = "<Facebook應用程式密鑰>"
 
 ## 畫面截圖
 
-![screenshot-3](./screenshoots/screenshot-3.png)
+![screenshot-3](./public/screenshots/screenshot-1.jpg)
 
-![screenshot-4](./screenshoots/screenshot-4.png)
+![screenshot-4](./public/screenshots/screenshot-2.jpg)
 
-![screenshot-5](./screenshoots/screenshot-5.png)
+![screenshot-5](./public/screenshots/screenshot-3.jpg)
 
 ## 開發環境與套件
 
