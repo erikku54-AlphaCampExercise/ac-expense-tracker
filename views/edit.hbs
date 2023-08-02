@@ -122,8 +122,8 @@
     const categoryId = document.querySelector('#categoryId').value;
     const amount = document.querySelector('#amount').value;
 
-    if (name==='{{ record.name }}'||name==='{{ record.date }}'||
-      name==='{{ record.categoryId }}'||name==='{{ record.amount }}') {
+    if (name==='{{ record.name }}' && date==='{{ dateStr }}' &&
+      categoryId==='{{ record.categoryId }}' && amount==='{{ record.amount }}') {
         return false;
     }
     return true;
